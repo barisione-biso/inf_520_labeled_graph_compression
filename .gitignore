@@ -30,3 +30,27 @@
 *.exe
 *.out
 *.app
+
+#others 1rst approach
+front_coding_encode
+front_coding_decode
+*.elias_delta
+*.elias_gamma
+*.fibonacci
+
+#2nd approach
+dat/
+build-index
+query-index
+MTF
+MTF_test
+test_write_uint32_binary_file
+test_load_uint32_binary_file
+mtf_s_shuff_encoded
+text_compression_test
+getAllObjectsGivenSubject_test
+build_index_output.txt
+mtf_output.txt
+query_test_after_changes.txt
+query_test_before_changes.txt
+to_compare
