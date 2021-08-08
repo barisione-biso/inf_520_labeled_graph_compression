@@ -386,7 +386,7 @@ public:
     }
     void save_encoded_output_v(string filename, vector<uint32_t> encoded_output)
     {
-        std::ofstream boutput("../dat/"+filename,std::ofstream::binary);
+        std::ofstream boutput(filename,std::ofstream::binary);
         int count=0;
         for (auto &s : encoded_output){
             count++;
@@ -1111,7 +1111,7 @@ public:
         return results;
     }
     //as vector : it saves encoded values in a binary file
-    void apply_MTF_v()
+    void apply_MTF_v(string dir_path)
     {
         vector<uint32_t> decoded_output;
         vector<uint32_t> encoded_output;
@@ -1119,21 +1119,21 @@ public:
         MTF mtf_s(alphabet_S);
         bwt_type &L = BWT_S.getL();
         encoded_output = mtf_s.v_encode(L);
-        save_encoded_output_v("mtf_s", encoded_output);
+        save_encoded_output_v(dir_path+"/mtf_s", encoded_output);
         //decoded_output = mtf_s.v_decode(encoded_output);
         //print_mtf_content_v(L, encoded_output, decoded_output);
         cout << "apply_MTF BWTp" << endl;
         MTF mtf_p(alphabet_P);
         L = BWT_P.getL();
         encoded_output = mtf_p.v_encode(L);
-        save_encoded_output_v("mtf_p", encoded_output);
+        save_encoded_output_v(dir_path+"/mtf_p", encoded_output);
         //decoded_output = mtf_s.v_decode(encoded_output);
         //print_mtf_content_v(L, encoded_output, decoded_output);
         cout << "apply_MTF BWTo" << endl;
         MTF mtf_o(alphabet_O);
         L = BWT_O.getL();
         encoded_output = mtf_o.v_encode(L);
-        save_encoded_output_v("mtf_o", encoded_output);
+        save_encoded_output_v(dir_path+"/mtf_o", encoded_output);
         //decoded_output = mtf_s.v_decode(encoded_output);
         //print_mtf_content_v(L, encoded_output, decoded_output);
     }

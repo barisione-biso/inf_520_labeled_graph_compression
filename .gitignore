@@ -54,3 +54,6 @@ mtf_output.txt
 query_test_after_changes.txt
 query_test_before_changes.txt
 to_compare
+*_shuff_decoded
+*_shuff_freqs
+shuff
