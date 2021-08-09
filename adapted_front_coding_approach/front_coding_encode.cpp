@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     } while (!ifs.eof());
 
     D.shrink_to_fit();
-
+    cout << "--Loaded " << D.size() << " triples" << endl;
     //lexicographic triple sorting. 
     vector<spo_triple>::iterator it, triple_begin = D.begin(), triple_second = std::next(D.begin()), triple_end = D.end();
     sort(triple_begin, triple_end);

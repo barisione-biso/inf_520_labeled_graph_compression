@@ -21,4 +21,4 @@ Prerequisites
     make
     ./build_release.sh
 2. Run the experiment:
-    ./run_graph_compression_test_mtf_shuff.sh full <path_to_input_file> (see results in paper first cause there is a part with O(n²) complexity).
+    ./run_graph_compression_test_mtf_shuff.sh full <path_to_input_file> (see results in paper first cause Move-To-Front complexity makes it useless for larger alphabets).

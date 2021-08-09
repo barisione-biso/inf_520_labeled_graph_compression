@@ -33,11 +33,11 @@ vector<spo_triple> decode_vector(vlc_vector<sdsl::coder::elias_delta> ev){
                 clean_o = true;
             }
         }else{
-            //reading a cero.
+            //reading a zero.
             clean_o = true;
             o = 0;
             if(!clean_p){
-                //one cero read.
+                //one zero read.
                 clean_p = true;
             }else{
                 clean_s = true;
@@ -77,11 +77,11 @@ vector<spo_triple> decode_vector(vlc_vector<sdsl::coder::elias_gamma> ev){
                 clean_o = true;
             }
         }else{
-            //reading a cero.
+            //reading a zero.
             clean_o = true;
             o = 0;
             if(!clean_p){
-                //one cero read.
+                //one zero read.
                 clean_p = true;
             }else{
                 clean_s = true;
@@ -121,11 +121,11 @@ uint64_t i, s = 0, p = 0, o = 0;
                 clean_o = true;
             }
         }else{
-            //reading a cero.
+            //reading a zero.
             clean_o = true;
             o = 0;
             if(!clean_p){
-                //one cero read.
+                //one zero read.
                 clean_p = true;
             }else{
                 clean_s = true;

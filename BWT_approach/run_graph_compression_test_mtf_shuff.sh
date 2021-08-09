@@ -28,8 +28,15 @@ do_shuff () {
         printf '    The file "%s" is different from "%s"\n' "${input_path}/${mtf_file}" "${input_path}/${mtf_file}_shuff_decoded"
     fi
 
-    #ls -lh ${mtf_file}_shuff_encoded
-    #ls -lh "${input_path}/${mtf_file}"
+    ls -lh ${mtf_file}_shuff_encoded
+    ls -lh ${mtf_file}_shuff_freqs
+    ls -lh "${input_path}/${mtf_file}"
+    ls -lh "${input_path}/${mtf_file}_shuff_decoded"
+
+    rm -f ${mtf_file}_shuff_encoded
+    rm -f ${mtf_file}_shuff_freqs
+    rm -f "${input_path}/${mtf_file}"
+    rm -f "${input_path}/${mtf_file}_shuff_decoded"
 }
 shuff_working_dir="$(pwd)"
 echo "working directory : $shuff_working_dir"
@@ -46,9 +53,30 @@ if [[ $mode == full ]] || [[ $mode == part1 ]]; then
     echo "--- Creating index"
     #./text_compression_test_create.sh
     ./text_compression_test "${input_path}"/"${input_file}" create
+    ls -lh "${input_path}"/"${input_file}.bwts.int_vector"
+    ls -lh "${input_path}"/"${input_file}.bwts.compressed_int_vector"
+    ls -lh "${input_path}"/"${input_file}.bwtp.int_vector"
+    ls -lh "${input_path}"/"${input_file}.bwtp.compressed_int_vector"
+    ls -lh "${input_path}"/"${input_file}.bwto.int_vector"
+    ls -lh "${input_path}"/"${input_file}.bwto.compressed_int_vector"
+    echo "deleting tmp files..."
+    rm -f "${input_path}"/"${input_file}.bwts.int_vector"
+    rm -f "${input_path}"/"${input_file}.bwts.compressed_int_vector"
+    rm -f "${input_path}"/"${input_file}.bwtp.int_vector"
+    rm -f "${input_path}"/"${input_file}.bwtp.compressed_int_vector"
+    rm -f "${input_path}"/"${input_file}.bwto.int_vector"
+    rm -f "${input_path}"/"${input_file}.bwto.compressed_int_vector"
     echo "--- Saving mtf encoded BWT_{s,p,o} "
     #./text_compression_test_load.sh
     ./text_compression_test "${input_path}"/"${input_file}" load
+
+    ls -lh "${input_path}"/"${input_file}.alphabet_s"
+    ls -lh "${input_path}"/"${input_file}.alphabet_p"
+    ls -lh "${input_path}"/"${input_file}.alphabet_o"
+
+    rm -f "${input_path}"/"${input_file}.alphabet_s"
+    rm -f "${input_path}"/"${input_file}.alphabet_p"
+    rm -f "${input_path}"/"${input_file}.alphabet_o"
 fi
 mtf_file=("mtf_s" "mtf_p" "mtf_o")
 if [[ $mode == full ]] || [[ $mode == part2 ]]; then
@@ -64,9 +92,12 @@ if [[ $mode == full ]] || [[ $mode == part2 ]]; then
     do_shuff ${mtf_file[2]}
 fi
 
-if [[ $mode == full ]]; then
-    echo "deleting tmp & decoded file(s) "
-    rm -f shuff_freqs ${mtf_file[0]}_shuff_encoded "${input_path}/${mtf_file[0]}"
-    rm -f shuff_freqs ${mtf_file[1]}_shuff_encoded "${input_path}/${mtf_file[1]}"
-    rm -f shuff_freqs ${mtf_file[2]}_shuff_encoded "${input_path}/${mtf_file[2]}"
-fi
+#if [[ $mode == full ]]; then
+#    ls -lh ${mtf_file[0]}_shuff_freqs ${mtf_file[0]}_shuff_encoded "${input_path}/${mtf_file[0]}"
+#    ls -lh ${mtf_file[1]}_shuff_freqs ${mtf_file[1]}_shuff_encoded "${input_path}/${mtf_file[1]}"
+#    ls -lh ${mtf_file[2]}_shuff_freqs ${mtf_file[2]}_shuff_encoded "${input_path}/${mtf_file[2]}"
+#    echo "deleting tmp & decoded file(s) "
+#    rm -f ${mtf_file[0]}_shuff_freqs ${mtf_file[0]}_shuff_encoded "${input_path}/${mtf_file[0]}"
+#    rm -f ${mtf_file[1]}_shuff_freqs ${mtf_file[1]}_shuff_encoded "${input_path}/${mtf_file[1]}"
+#    rm -f ${mtf_file[2]}_shuff_freqs ${mtf_file[2]}_shuff_encoded "${input_path}/${mtf_file[2]}"
+#fi

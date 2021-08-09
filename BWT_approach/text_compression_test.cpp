@@ -24,24 +24,29 @@ void create_index(string filename)
     } while (!ifs.eof());
     ifs.close();
     D.shrink_to_fit();
-    //cout << "--Loaded " << D.size() << " triples" << endl;
+    cout << "--Loaded " << D.size() << " triples" << endl;
     //cout << "Step 2: creating the Ring with 3 BTWs"<<endl;
     triple_bwt ring;
     ring.index(D);
     ring.save(filename);
 }
 
-void load_index(string filename)
+string get_directory(string filename)
 {
-    triple_bwt ring;
-    ring.load(filename);
     string directory;
     const size_t last_slash_idx = filename.rfind('/');
     if (std::string::npos != last_slash_idx)
     {
         directory = filename.substr(0, last_slash_idx);
     }
-    std::cout << "directory : " << directory << std::endl;
+    //std::cout << "directory : " << directory << std::endl;
+    return directory;
+}
+void load_index(string filename)
+{
+    triple_bwt ring;
+    ring.load(filename);
+    string directory = get_directory(filename);
     ring.apply_MTF_v(directory);
 }
 int main(int argc, char **argv)

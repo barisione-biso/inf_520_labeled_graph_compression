@@ -65,10 +65,29 @@ class bwt
                  + sdsl::size_in_bytes(C_rank) + sdsl::size_in_bytes(C_select)
                  + sdsl::size_in_bytes(C_select0);
         }
+    void save_L_bit_compress(string filename)
+    {
+        sdsl::int_vector<> v_aux(L.size());
+        for (int i = 0; i < L.size(); i++)
+        {
+            v_aux[i] = L[i];
+        }
+        std::cout << "input size in bytes & megabytes                       : "<< sdsl::size_in_bytes(v_aux) << "," << sdsl::size_in_mega_bytes(v_aux) << std::endl;
+        string bit_file = filename+".int_vector";
+        sdsl::store_to_file(v_aux, bit_file);
+        std::cout << "saving int_vector representation of triples at            : " <<bit_file <<  std::endl;
+        sdsl::util::bit_compress(v_aux);
+        std::cout << "compressed input size in bytes & megabytes            : "<< sdsl::size_in_bytes(v_aux) << "," << sdsl::size_in_mega_bytes(v_aux) << std::endl;
+        string bit_compressed_file = filename+".compressed_int_vector";
+        sdsl::store_to_file(v_aux, bit_compressed_file);
+        std::cout << "saving bit_compressed representation of triples at    : " <<bit_compressed_file <<  std::endl;
+
+    }
 	void save(string filename)
         {
             sdsl::store_to_file(L, filename+".L");
             sdsl::store_to_file(*C_bv, filename+".C");
+            save_L_bit_compress(filename);
         }
 
         void load(string filename)

@@ -229,7 +229,7 @@ public:
             //cout << "Size of D " << D.size() << " elements" << endl;
             util::bit_compress(t);
             //cout << "Done" << endl; fflush(stdout);
-            cout << "t size " << size_in_bytes(t) << endl;
+            //cout << "t size " << size_in_bytes(t) << endl;
             //int_vector<> bwt_aux(3*n);
 
             {
