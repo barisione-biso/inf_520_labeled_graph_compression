@@ -9,7 +9,9 @@ Prerequisites
 1st experiment
 ===============
 1. Compile adapted_front_coding_appoach:
+    
     cd adapted_front_coding_approach/
+
     ./build_release.sh
 2. Run the experiment:
     ./run_graph_compression_test_front_coding.sh <path_to_input_file>
@@ -17,8 +19,12 @@ Prerequisites
 2nd experiment
 ===============
 1. Compile BWT_approach:
+
     cd BWT_approach/
+
     make
+    
     ./build_release.sh
 2. Run the experiment:
-    ./run_graph_compression_test_mtf_shuff.sh full <path_to_input_file> (see results in paper first cause Move-To-Front complexity makes it useless for larger alphabets).
+    ./run_graph_compression_test_mtf_shuff.sh full <path_to_input_file> 
+    (see results in paper first cause Move-To-Front complexity makes it useless for larger alphabets).
